@@ -26,13 +26,22 @@ const btnHideTitle = document.querySelector(".btn-warning");
 const btnSwap = document.querySelector(".btn-success");
 const btnClose = document.querySelector(".popup-close");
 
-btnHideTitle.addEventListener("click", function () {
-  titleBlock.classList.toggle("hidden");
-});
+// btnHideTitle.addEventListener("click", function () {
+//   titleBlock.classList.toggle("hidden");
+// });
 
-btnSwap.addEventListener("click", function () {
-  columnCenter.classList.toggle("order-first");
-});
+// btnSwap.addEventListener("click", function () {
+//   columnCenter.classList.toggle("order-first");
+// });
+
+let bntClick = function (btn, block, cssClass) {
+  btn.addEventListener("click", function () {
+    block.classList.toggle(cssClass);
+  });
+};
+
+bntClick(btnHideTitle, titleBlock, "hidden");
+bntClick(btnSwap, columnCenter, "order-first");
 
 btnClose.addEventListener("click", function () {
   popupBlock.classList.add("hidden");
