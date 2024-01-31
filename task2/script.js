@@ -44,10 +44,10 @@ form.addEventListener("submit", (e) => {
   const dataObj = Object.fromEntries(dataArr);
   const text = JSON.stringify(dataObj);
   renderItem(text);
-  getResponse();
+  getResponse(dataArr);
 });
 
-async function getResponse() {
-  const response = await fetch("./index.html");
+async function getResponse(data) {
+  const response = await fetch("./index.html", data);
   if (response.ok) alert("good");
 }
