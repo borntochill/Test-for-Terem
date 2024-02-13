@@ -40,14 +40,18 @@ const renderItem = function (item) {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const dataArr = new FormData(form);
+  const dataArr = [...new FormData(form)];
   const dataObj = Object.fromEntries(dataArr);
   const text = JSON.stringify(dataObj);
+  const URLArr = [];
   renderItem(text);
-  getResponse(dataArr);
+  dataArr.forEach((el) => URLArr.push(el.join("=")));
+  const URLString = URLArr.join("&");
+  getResponse(URLString);
 });
 
 async function getResponse(data) {
-  const response = await fetch("./index.html", data);
+  const response = await fetch(`./index.html?${data}`);
   if (response.ok) alert("good");
+  console.log(data);
 }
